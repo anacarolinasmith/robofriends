@@ -15,7 +15,7 @@ class App extends Component {
 
 	componentDidMount() {
 		fetch('https://jsonplaceholder.typicode.com/users')
-			.then(response=> response.json())
+			.then(response=> response.json()) //converts response to something you can read in JavaScript (it returns a "promise")
 			.then(users => {this.setState({ robots: users })});
 	}
 
@@ -28,7 +28,7 @@ class App extends Component {
 		const filteredRobots = robots.filter(robot => {
 			return robot.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-		if (robots.length === 0) {
+		if (!robots.length) {
 			return <h1>Loading...</h1>
 		} else {
 			return (
